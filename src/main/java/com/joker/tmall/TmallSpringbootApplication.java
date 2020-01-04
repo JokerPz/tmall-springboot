@@ -1,4 +1,4 @@
-package com.joker.tmall_springboot;
+package com.joker.tmall;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
