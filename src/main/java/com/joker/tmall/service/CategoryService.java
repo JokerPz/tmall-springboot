@@ -17,4 +17,5 @@ public class CategoryService {
         Sort sort = Sort.by(Sort.Direction.DESC,"id");
         return categoryDao.findAll(sort);
     }
+
 }
