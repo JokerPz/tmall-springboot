@@ -21,7 +21,7 @@ public class Page4Navigator <T> {
     int totalPages;
 
     /**
-     *
+     * 当前页码
      */
     int number;
 
@@ -102,10 +102,10 @@ public class Page4Navigator <T> {
         int[] navigatepageNums;
         // 首页
         int firstPage = 1;
-        if (totalPages < navigatePages) {
+        if (totalPages <= navigatePages) {
             navigatepageNums = new int[totalPages];
-            for (int i = 1; i <= totalPages; i++) {
-                navigatepageNums[i] = i++;
+            for (int i = 0; i < totalPages; i++) {
+                navigatepageNums[i] = i + 1;
             }
         } else {
             navigatepageNums = new int[navigatePages];

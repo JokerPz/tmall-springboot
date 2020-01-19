@@ -23,11 +23,20 @@ class TmallSpringbootApplicationTests extends BaseTest{
     }
 
     @Test
-    void add() {
-        Category category = new Category();
-        category.setName("华强北Sony耳机");
-        category = categoryDao.save(category);
-        System.out.println(category);
+    void addCategory() {
+        for (int i = 1; i <= 15; i++) {
+            Category category = new Category();
+            category.setName(String.format("小米%s手机", i));
+            category = categoryDao.save(category);
+            System.out.println(category);
+        }
+    }
+
+    @Test
+    void deleleCategory() {
+        Category deleteCategory = new Category();
+        deleteCategory.setId(3);
+        categoryDao.deleteById(3);
     }
 
 
