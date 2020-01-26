@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head th:include="include/admin/adminHeader::html('分类管理')" ></head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <body>
 <div th:replace="include/admin/adminNavigator::html" ></div>
 <script>
@@ -38,10 +39,12 @@
                     jumpByNumber(start,vue);
                 },
                 add: function () {
-                    if(!checkEmpty(this.bean.name, "分类名称"))
+                    if(!checkEmpty(this.bean.name, "分类名称")){
                         return;
-                    if(!checkEmpty(this.file, "分类图片"))
+                    }
+                    if(!checkEmpty(this.file, "分类图片")){
                         return;
+                    }
                     var url = this.uri;
 
                     //axios.js 上传文件要用 formData 这种方式
@@ -50,7 +53,7 @@
                     formData.append("name", this.bean.name);
                     axios.post(url,formData).then(function(response){
                         vue.list(0);
-                        vue.bean = { id: 0, name: '', hp: '0'};
+                        vue.bean = { id: 0, name: ''};
                         $("#categoryPic").val('');
                         vue.file = null;
                     });
@@ -58,6 +61,19 @@
                 getFile: function (event) {
                     this.file = event.target.files[0];
                 },
+                deleteBean: function (id) {
+                    if (!checkDeleteLink()) {
+                        return;
+                    }
+                    var url = this.uri + "/" + id;
+                    axios.delete(url).then(function (response) {
+                        if (0 != response.data.length) {
+                            alert(response.data());
+                        } else {
+                            vue.list(0);
+                        }
+                    })
+                }
             }
         });
     });

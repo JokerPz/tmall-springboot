@@ -33,9 +33,9 @@ public class CategoryService {
 
     /**
      * 分类-分页查询
-     * @param start
-     * @param size
-     * @param navigatePages
+     * @param start 开始的页码
+     * @param size 每页展示条数，默认5条
+     * @param navigatePages 导航页数量，默认5个
      * @return
      */
     public Page4Navigator<Category> listByPage(int start, int size, int navigatePages) {
@@ -49,15 +49,33 @@ public class CategoryService {
      * 分类-新增
      * @param category
      */
-    public void addCategory(Category category){
+    public void addOrUpdateCategory(Category category){
         categoryDao.save(category);
     }
 
+    /**
+     * 分类-删除
+     * @param id 记录主键id
+     */
     public void deleteCategory(Integer id) {
         if (id == null || id == 0) {
-            LOGGER.error("传入分类的id为{}", id);
+            LOGGER.error("传入分类的id为【{}】", id);
             throw new NullPointerException("删除操作有误");
         }
         categoryDao.deleteById(id);
+    }
+
+    /**
+     * 查询单个分类
+     * @param id
+     * @return
+     */
+    public Category getCategory(Integer id) {
+        Category category = categoryDao.getOne(id);
+        if (category == null) {
+            LOGGER.error("分类id【{}】的数据不存在", id);
+            throw new NullPointerException("分类不存在");
+        }
+        return category;
     }
 }
