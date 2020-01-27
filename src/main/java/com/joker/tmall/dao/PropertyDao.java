@@ -12,5 +12,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @date 2020/1/25 9:22 下午
  */
 public interface PropertyDao extends JpaRepository<Property, Integer> {
-    Page<Property> findbyCategory(Category category, Pageable pageable);
+    Page<Property> findByCategory(Category category, Pageable pageable);
 }
