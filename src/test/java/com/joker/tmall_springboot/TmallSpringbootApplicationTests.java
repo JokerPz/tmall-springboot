@@ -17,26 +17,26 @@ class TmallSpringbootApplicationTests extends BaseTest{
     @Test
     void contextLoads() {
         List<Category> categoryList = categoryDao.findAll();
-        for (Category category : categoryList) {
-            System.out.println(category);
-        }
+//        for (Category category : categoryList) {
+//            System.out.println(category);
+//        }
     }
 
     @Test
     void addCategory() {
-        for (int i = 1; i <= 15; i++) {
-            Category category = new Category();
-            category.setName(String.format("小米%s手机", i));
-            category = categoryDao.save(category);
-            System.out.println(category);
-        }
+//        for (int i = 1; i <= 15; i++) {
+//            Category category = new Category();
+//            category.setName(String.format("小米%s手机", i));
+//            category = categoryDao.save(category);
+//            System.out.println(category);
+//        }
     }
 
     @Test
     void deleleCategory() {
         Category deleteCategory = new Category();
         deleteCategory.setId(3);
-        categoryDao.deleteById(3);
+//        categoryDao.deleteById(3);
     }
 
 

@@ -11,7 +11,7 @@
     <groupId>com.joker</groupId>
     <artifactId>tmall_springboot</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
     <name>tmall_springboot</name>
     <description>Demo project for Spring Boot</description>
 
